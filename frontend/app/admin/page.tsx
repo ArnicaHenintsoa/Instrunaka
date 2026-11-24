@@ -60,7 +60,7 @@ export default function AdminDashboardPage() {
         subtitle="Suis l'activité d'Instrunaka en temps réel."
       />
 
-      {/* Bloc "À traiter" */}
+     
       {(stats.producer_requests.pending > 0 || stats.instrumentals.pending > 0 || stats.orders.pending > 0) && (
         <div className="glass-card border border-warning/20 rounded-3xl p-5 mb-8 flex items-start gap-4 shadow-sm relative overflow-hidden animate-slide-up">
           <div className="absolute top-0 right-0 w-32 h-32 bg-warning/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none" />
@@ -82,7 +82,7 @@ export default function AdminDashboardPage() {
         </div>
       )}
 
-      {/* Cartes de stats */}
+    
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         {statCards.map((card, index) => {
           const Icon = card.icon;
@@ -103,7 +103,7 @@ export default function AdminDashboardPage() {
         })}
       </div>
 
-      {/* Listes */}
+     
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="glass-card rounded-[24px] p-6">
           <div className="flex items-center justify-between mb-5">

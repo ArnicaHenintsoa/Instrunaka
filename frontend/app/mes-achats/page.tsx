@@ -133,7 +133,7 @@ export default function MesAchatsPage() {
     try {
       await api.post(`/orders/${cancelOrderId}/cancel`);
       setToast({ message: "Commande annulée.", variant: "success" });
-      // Recharger la liste
+      
       const res = await api.get("/orders");
       setOrders(res?.data ?? []);
       setCancelOrderId(null);
@@ -347,7 +347,7 @@ export default function MesAchatsPage() {
         </p>
       )}
 
-      {/* Modale d'annulation */}
+  
       <ConfirmModal
         isOpen={!!cancelOrderId}
         onClose={() => setCancelOrderId(null)}

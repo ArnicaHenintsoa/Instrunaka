@@ -41,7 +41,7 @@ export default function PackDetailPage({ params }: PageProps) {
   const router = useRouter();
   const [pack, setPack] = useState<Pack | null>(null);
   const [loading, setLoading] = useState(true);
-  const [buying, setBuying] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [payment, setPayment] = useState<Payment | null>(null);
   const [toast, setToast] = useState<{ message: string; variant: "success" | "error" } | null>(null);
 
@@ -59,17 +59,22 @@ export default function PackDetailPage({ params }: PageProps) {
     void load();
   }, [id]);
 
-  const handleBuy = async () => {
+  // Ouvre la modale : la commande est créée depuis la modale (avec code promo éventuel)
+  const handleBuy = () => {
     if (!auth.isAuthenticated()) {
       router.push(`/connexion?redirect=/packs/${id}`);
       return;
     }
+    setModalOpen(true);
+  };
 
-    setBuying(true);
+  // Appelée par OrderModal quand l'utilisateur confirme (promoCode optionnel)
+  const handleCreateOrder = async (promoCode?: string): Promise<void> => {
     try {
       const res = await api.post("/orders", {
         pack_id: pack?.id,
         type: "pack",
+        ...(promoCode ? { promo_code: promoCode } : {}),
       });
       setPayment(res.payment);
     } catch (e: unknown) {
@@ -77,9 +82,13 @@ export default function PackDetailPage({ params }: PageProps) {
         message: e instanceof Error ? e.message : "Erreur lors de la commande",
         variant: "error",
       });
-    } finally {
-      setBuying(false);
+      throw e;
     }
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setPayment(null);
   };
 
   if (loading) return <div className="container mx-auto px-4 py-16 text-center">Chargement...</div>;
@@ -198,7 +207,7 @@ export default function PackDetailPage({ params }: PageProps) {
                   <span className="text-xl font-bold text-accent">
                     {pack.price.toLocaleString("fr-FR")} Ar
                   </span>
-                  <Button size="sm" loading={buying} onClick={handleBuy}>
+                  <Button size="sm" onClick={handleBuy}>
                     Acheter
                   </Button>
                 </div>
@@ -214,11 +223,14 @@ export default function PackDetailPage({ params }: PageProps) {
       </div>
 
       <OrderModal
-        isOpen={!!payment}
-        onClose={() => setPayment(null)}
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
         payment={payment}
         orderType="non_exclusive"
         instrumentalTitle={pack.name}
+        coverPath={pack.cover_path ?? undefined}
+        basePrice={pack.price}
+        onCreateOrder={handleCreateOrder}
       />
     </div>
   );

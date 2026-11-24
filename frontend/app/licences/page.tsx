@@ -14,7 +14,7 @@ export default function LicencesPage() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {/* Licence Non Exclusive */}
+      
         <div className="glass-card border-border rounded-3xl p-8 shadow-sm flex flex-col">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-content">Non exclusive</h2>
@@ -40,7 +40,7 @@ export default function LicencesPage() {
           </Link>
         </div>
 
-        {/* Licence Exclusive */}
+       
         <div className="bg-dark rounded-3xl p-8 shadow-xl flex flex-col text-white border border-border">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold">Exclusive</h2>

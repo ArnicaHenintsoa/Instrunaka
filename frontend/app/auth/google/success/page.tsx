@@ -19,14 +19,14 @@ function GoogleSuccessContent() {
       }
 
       try {
-        // On échange le code contre un token Sanctum
+       
         const res = await api.post("/auth/google/exchange", { code });
 
         if (!res || !res.token) {
           throw new Error("Token manquant dans la réponse.");
         }
 
-        // On stocke le token et on redirige vers le profil
+      
         auth.setToken(res.token);
         window.location.href = "/profil";
       } catch (e: unknown) {

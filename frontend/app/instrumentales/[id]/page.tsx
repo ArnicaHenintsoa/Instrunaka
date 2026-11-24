@@ -56,7 +56,7 @@ type PageProps = Readonly<{
   params: Promise<{ id: string }>;
 }>;
 
-// Forme d'onde décorative (hauteurs en %)
+
 const WAVE = [
   30, 55, 40, 70, 50, 85, 60, 45, 75, 35, 65, 90, 50, 40, 70, 55, 80, 45, 60, 35,
   75, 50, 65, 40, 55, 70, 45, 60, 35, 50, 80, 55,
@@ -240,7 +240,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start mb-16">
-        {/* ───────── Colonne gauche : pochette + actions ───────── */}
+       
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="relative isolate">
             <div className="absolute -inset-6 -z-10 rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
@@ -289,7 +289,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* ───────── Colonne droite : infos, extrait, licences ───────── */}
+       
         <div className="lg:col-span-7 min-w-0">
           <p className="text-xs font-semibold text-accent uppercase tracking-[0.2em] mb-3">
             {instrumental.genre?.label || "Instrumentale"}
@@ -298,7 +298,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
             {instrumental.title}
           </h1>
 
-          {/* Producteur */}
+         
           {producer && (
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <Link href={`/producteurs/${producer.id}`} className="group inline-flex items-center gap-2.5">
@@ -314,7 +314,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Métadonnées */}
+       
           <div className="flex flex-wrap gap-2 mb-6">
             {instrumental.bpm && <Chip icon={Activity}>{instrumental.bpm} BPM</Chip>}
             {instrumental.musical_key && <Chip icon={Music}>{instrumental.musical_key}</Chip>}
@@ -331,7 +331,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
             </p>
           )}
 
-          {/* Lecteur d'extrait */}
+      
           {hasPreview && (
             <div className="bg-surface border border-border rounded-3xl p-4 md:p-5 flex items-center gap-4 mb-8 shadow-sm">
               <button
@@ -365,7 +365,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Licences */}
+        
           <h2 className="text-lg font-bold text-content mb-4">Choisir une licence</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Standard */}
@@ -384,7 +384,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
               </Button>
             </div>
 
-            {/* Exclusive */}
+            
             <div className="relative bg-accent/5 border-2 border-accent/40 rounded-3xl p-6 flex flex-col shadow-lg shadow-accent/10">
               <span className="absolute -top-3 right-5 px-3 py-1 rounded-full bg-accent text-white text-[10px] font-bold tracking-wider uppercase">
                 Exclusive
@@ -410,7 +410,7 @@ export default function InstrumentalDetailPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Avis */}
+      
       <div className="border-t border-border pt-10">
         <ReviewSection instrumentalId={instrumental.id} />
       </div>

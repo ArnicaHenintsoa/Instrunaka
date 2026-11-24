@@ -52,11 +52,13 @@ export default function PacksPage() {
 
   return (
     <PageContainer>
-      <PageHeader 
-        label="PACKS" 
-        title="Les packs" 
-        subtitle="Économise et achète plusieurs instrumentales groupées."
-      />
+      <div className="text-center [&_*]:mx-auto">
+        <PageHeader 
+          label="PACKS" 
+          title="Les packs" 
+          subtitle="Économise et achète plusieurs instrumentales groupées."
+        />
+      </div>
 
       {packs.length === 0 ? (
         <div className="glass-card border-border rounded-3xl p-12 text-center">
@@ -66,7 +68,7 @@ export default function PacksPage() {
           <p className="text-content-secondary">Aucun pack pour le moment.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-16">
+        <div className="flex flex-wrap justify-center gap-6 pb-16">
           {packs.map((pack) => {
             const originalPrice = pack.instrumentals.reduce(
               (acc, i) => acc + i.non_exclusive_price,
@@ -74,7 +76,7 @@ export default function PacksPage() {
             );
             const savings = originalPrice - pack.price;
             return (
-              <div key={pack.id} className="glass-card border-border rounded-3xl p-6 flex flex-col">
+              <div key={pack.id} className="w-full md:w-[calc(50%-0.75rem)] glass-card border-border rounded-3xl p-6 flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                   <h2 className="text-2xl font-bold text-content">{pack.name}</h2>
                   {savings > 0 && (

@@ -25,3 +25,19 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+
+
+# Dossier Laragon local
+laragon/
+
+# Dépendances dans tous les sous-dossiers
+**/node_modules/
+**/vendor/
+
+# Fichiers d'environnement confidentiels
+.env.*
+!.env.example
+
+# Archives de sauvegarde
+*.zip

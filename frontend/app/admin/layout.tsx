@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { api, auth } from "@/lib/api";
 import Logo from "@/components/ui/Logo";
-import ThemeToggle from "@/components/layout/ThemeToggle"; // ← NOUVEAU
+import ThemeToggle from "@/components/layout/ThemeToggle"; 
 import {
   LayoutDashboard, ShoppingCart, Mic2, Inbox, Library, Users, Ticket, Package, Gift, MessageSquare, History, ChevronLeft, Menu, X
 } from "lucide-react";
@@ -56,11 +56,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="h-screen bg-background flex overflow-hidden">
-      {/* Sidebar Desktop */}
+      
       <aside className="hidden lg:flex flex-col w-64 glass border-r border-border h-full shrink-0">
         <div className="h-20 flex items-center justify-between px-6 border-b border-border shrink-0">
           <Logo variant="light" />
-          <ThemeToggle /> {/* ← Bouton mode sombre ajouté ici */}
+          <ThemeToggle /> 
         </div>
 
         <div className="flex-1 overflow-y-auto py-4 px-3 space-y-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -91,7 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       </aside>
 
-      {/* Mobile Header & Drawer */}
+      
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 glass border-b border-border z-30 flex items-center justify-between px-4">
         <Logo variant="light" />
         <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       )}
 
-      {/* Main Content */}
+    
       <main className="flex-1 overflow-y-auto pt-16 lg:pt-0">
         <div className="p-4 lg:p-8 max-w-[1200px] mx-auto">
           {children}

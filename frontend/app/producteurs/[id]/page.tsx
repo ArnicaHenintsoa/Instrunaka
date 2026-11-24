@@ -130,7 +130,7 @@ export default function ProducerPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Ses créations */}
+       
         <h2 className="text-2xl font-bold text-content mb-6">Ses créations</h2>
 
         {instrumentals.length === 0 ? (
