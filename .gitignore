@@ -1,9 +1,22 @@
+# Node
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
 
+# Laravel
+backend/vendor/
+backend/storage/*.key
+backend/.env
+backend/.env.local
+backend/.phpunit.result.cache
+
+# Laragon (très important)
 laragon/
-**/node_modules/
-**/vendor/
-.env
-.env.*
-!.env.example
-*.zip
+
+# Autres
+.git/
 *.log
+*.zip
+*.pdf
+.DS_Store
